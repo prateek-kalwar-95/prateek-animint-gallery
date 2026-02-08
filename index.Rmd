@@ -42,7 +42,7 @@ Date_Link <- sprintf('<a href="%s">%s</a>', gh_page_link, dt$add.POSIXct)
 
 # Create thumbnail column with HTML img tags
 Image_HTML <- sprintf(
-  '<img src="%s" style="width:150px;height:100px;object-fit:cover;" onerror="this.onerror=null; this.src=\'https://via.placeholder.com/150x100?text=No+Image\';">',
+  '<img src="%s" style="width:auto;height:auto;object-fit:cover;" onerror="this.onerror=null; this.src=\'https://via.placeholder.com/150x100?text=No+Image\';">',
   image_links
 )
 
@@ -58,17 +58,11 @@ full_data <- data.frame(
 
 # Render Table with custom dimensions
 kable(full_data, format = "html", escape = FALSE) %>%
-  kable_styling(
-    full_width = TRUE, # Set to TRUE for full width or FALSE for auto width
-    bootstrap_options = c("striped", "hover", "condensed"),
-    font_size = 14,
-    position = "center"
-  ) %>%
-  column_spec(1, width = "180px") %>% # Image column width
-  column_spec(2, width = "200px") %>% # Visualization Link column width
-  column_spec(3, width = "300px") %>% # Source column width
-  column_spec(4, width = "150px") %>% # Date column width
-  scroll_box(width = "100%", height = "600px") # Add scrollable box
+  kable_styling(full_width = FALSE) %>%
+  column_spec(1, width = "400px") %>% # Image column width and height
+  column_spec(2, width = "200px") %>% # Visualization Link column width and height
+  column_spec(3, width = "300px") %>% # Source column width and height
+  column_spec(4, width = "150px") # Date column width and height
 ```
 
 [Download the above table](meta.csv)
