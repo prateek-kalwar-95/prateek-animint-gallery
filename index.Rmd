@@ -1,0 +1,78 @@
+---
+title: "Prateek's Animint Gallery"
+author: "Prateek Kalwar"
+date: "February 8, 2026"
+output: html_document
+---
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Install required packages if not already installed (optional check)
+if (!requireNamespace("kableExtra", quietly = TRUE)) warning("kableExtra not installed")
+if (!requireNamespace("knitr", quietly = TRUE)) warning("knitr not installed")
+
+suppressPackageStartupMessages({
+  library(kableExtra)
+  library(knitr)
+})
+
+# Read data
+dt <- read.csv("meta.csv", stringsAsFactors = FALSE)
+
+# 1. Prepare Image Links
+# Using the raw.githubusercontent format as requested
+image_links <- sprintf("https://raw.githubusercontent.com/%s/main/Capture.png", dt$viz_owner_repo)
+
+# 2. Extract Creator and Title
+parts <- strsplit(dt$viz_owner_repo, "/")
+CreatorName <- sapply(parts, `[`, 1)
+viz.title <- sapply(parts, `[`, 2)
+
+# 3. Create Columns
+# Visualization Link: Text is "RepoName.viz", Value is GH Pages URL
+# URL: https://User.github.io/Repo/
+viz_url <- sprintf("https://%s.github.io/%s/", CreatorName, viz.title)
+viz_text <- sprintf("%s.viz", viz.title)
+Visualization_Link <- sprintf('<a href="%s">%s</a>', viz_url, viz_text)
+
+# Source Link: Text is Title (from CSV), Value is Source URL (from CSV)
+Source <- sprintf('<a href="%s">%s</a>', dt$source, dt$title)
+
+# Date/Repo Link: Text is Date, Value is Tree/gh-pages
+gh_page_link <- sprintf("https://github.com/%s/tree/gh-pages", dt$viz_owner_repo)
+Date_Link <- sprintf('<a href="%s">%s</a>', gh_page_link, dt$add.POSIXct)
+
+# Create thumbnail column with HTML img tags
+Image_HTML <- sprintf(
+  '<img src="%s" style="width:150px;height:100px;object-fit:cover;" onerror="this.onerror=null; this.src=\'https://via.placeholder.com/150x100?text=No+Image\';">',
+  image_links
+)
+
+# Combine Data
+# Columns: Image, Visualization_Link, Source, Date_Link
+full_data <- data.frame(
+  Image = Image_HTML,
+  Visualization_Link = Visualization_Link,
+  Source = Source,
+  Date = Date_Link,
+  stringsAsFactors = FALSE
+)
+
+# Render Table with custom dimensions
+kable(full_data, format = "html", escape = FALSE) %>%
+  kable_styling(
+    full_width = TRUE, # Set to TRUE for full width or FALSE for auto width
+    bootstrap_options = c("striped", "hover", "condensed"),
+    font_size = 14,
+    position = "center"
+  ) %>%
+  column_spec(1, width = "180px") %>% # Image column width
+  column_spec(2, width = "200px") %>% # Visualization Link column width
+  column_spec(3, width = "300px") %>% # Source column width
+  column_spec(4, width = "150px") %>% # Date column width
+  scroll_box(width = "100%", height = "600px") # Add scrollable box
+```
+
+[Download the above table](meta.csv)
+
+## Source code
+
+* [This gallery repository](https://github.com/prateek-kalwar-95/prateek-gallery)
