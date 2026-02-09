@@ -1,4 +1,5 @@
-add.POSIXct,viz_owner_repo,video,source,title
-2026-02-08T13:56:39.094159Z,prateek-kalwar-95/animint2-worldbank,,https://github.com/prateek-kalwar-95/animint2-worldbank,World Bank Data
-2026-02-08T13:56:40.094159Z,prateek-kalwar-95/brownian-motion,,https://github.com/prateek-kalwar-95/brownian-motion,Brownian Motion
-2026-02-08T13:56:41.094159Z,prateek-kalwar-95/flip_coin,,https://github.com/prateek-kalwar-95/flip_coin,Flip Coin   
+add.POSIXct,viz_owner_repo,source,title
+2026-02-08T13:56:39.094159Z,prateek-kalwar-95/animint2-worldbank,https://github.com/prateek-kalwar-95/animint2-worldbank,World Bank Data
+2026-02-08T13:56:40.094159Z,prateek-kalwar-95/brownian-motion,https://github.com/prateek-kalwar-95/brownian-motion,Brownian Motion
+2026-02-08T13:56:41.094159Z,prateek-kalwar-95/flip_coin,https://github.com/prateek-kalwar-95/flip_coin,Flip Coin   
+2026-02-08T13:56:42.094159Z,prateek-kalwar-95/leastSquare,https://github.com/prateek-kalwar-95/leastSquare,Least Square
