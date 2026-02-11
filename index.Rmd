@@ -34,7 +34,7 @@ viz_text <- sprintf("%s.viz", viz.title)
 Visualization_Link <- sprintf('<a href="%s">%s</a>', viz_url, viz_text)
 
 # Source Link: Text is Title (from CSV), Value is Source URL (from CSV)
-Source <- sprintf('<a href="%s">%s</a>', dt$source, dt$title)
+Source <- sprintf('<a href="%s/blob/main/%s.R">%s</a>', dt$source, viz.title, dt$title)
 
 # Date/Repo Link: Text is Date, Value is Tree/gh-pages
 gh_page_link <- sprintf("https://github.com/%s/tree/gh-pages", dt$viz_owner_repo)
