@@ -19,7 +19,7 @@ dt <- read.csv("meta.csv", stringsAsFactors = FALSE)
 
 # 1. Prepare Image Links
 # Using the raw.githubusercontent format as requested
-image_links <- sprintf("https://raw.githubusercontent.com/%s/main/Capture.png", dt$viz_owner_repo)
+image_links <- sprintf("https://raw.githubusercontent.com/%s/gh-pages/Capture.png", dt$viz_owner_repo)
 
 # 2. Extract Creator and Title
 parts <- strsplit(dt$viz_owner_repo, "/")
@@ -34,7 +34,7 @@ viz_text <- sprintf("%s.viz", viz.title)
 Visualization_Link <- sprintf('<a href="%s">%s</a>', viz_url, viz_text)
 
 # Source Link: Text is Title (from CSV), Value is Source URL (from CSV)
-Source <- sprintf('<a href="%s/blob/main/%s.R">%s</a>', dt$source, viz.title, dt$title)
+Source <- sprintf('<a href="https://github.com/prateek-kalwar-95/r/blob/main/%s.R">%s</a>', viz.title, dt$title)
 
 # Date/Repo Link: Text is Date, Value is Tree/gh-pages
 gh_page_link <- sprintf("https://github.com/%s/tree/gh-pages", dt$viz_owner_repo)
